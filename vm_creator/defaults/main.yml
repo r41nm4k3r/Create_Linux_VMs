@@ -5,4 +5,4 @@ default_vm_disk_size: 10
 image_directory: "/var/lib/libvirt/images"
 cloud_init_iso: "{{ image_directory }}/{{ vm_name }}/cloud-init.iso"
 default_vm_os: "arch"  # Will be prompted at runtime
-# root_password: ""  # Will be prompted at runtime
+default_vm_password: "$6$VZRRlbfRBEWneKKp$XenEHdLYBDLRsXmdhaSK5wv0CNw0EZl1HE3.Xb6BSIDjsFL0qmMAlrxCODBsWw5NM/zXSU8ABcBNeFoUjyYQb1"  # Will be prompted at runtime

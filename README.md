@@ -48,10 +48,11 @@ Default values are located in defaults/main.yml:
 - `vm_vcpus`: 2.
 - `vm_disk_size`: 10 GB.
 - `os_variants`: arch.
-- `ssh_public_key`: ssh will not work if user will not provide a key.
-- `global_password`: **It is important to set a password**. If no password is set user will have empty password and root will be locked.
+- `ssh_public_key`: ssh for root will not work if user will not provide a key.
+- `global_password`: "password".
 - `user`: user.
 
+**IMPORTANT**: If no password is set user and root will have the default password but ssh will work only for user.
 ---
 
 ## Usage

@@ -72,7 +72,7 @@
 
 - name: Set global password
   ansible.builtin.set_fact:
-    global_password: "{{ user_root_password.user_input }}"
+    global_password: "{{ user_root_password.user_input | default(default_vm_password, true) }}"
 
 # Add ssh key of the host machine
 - name: Prompt for global ssh key
