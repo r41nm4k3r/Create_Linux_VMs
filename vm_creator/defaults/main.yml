@@ -1,4 +1,4 @@
-vm_name: my-vm
+vm_name: ""
 vm_memory: 4096
 vm_vcpus: 4
 vm_disk_size: 15

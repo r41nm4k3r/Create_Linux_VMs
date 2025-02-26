@@ -1,3 +1,4 @@
+# Choose OS
 - name: Prompt for OS selection
   ansible.builtin.pause:
     prompt: "Enter the OS (debian, fedora, ubuntu, arch):"
@@ -12,6 +13,27 @@
     msg: "Invalid OS '{{ vm_os }}'. Choose from: debian, fedora, ubuntu, arch."
   when: vm_os not in os_variants.keys()
 
+# Choose vm name
+- name: Prompt for vm name
+  ansible.builtin.pause:
+    prompt: "Enter vm name:"
+  register: vmname
+
+- name: Set vm name
+  ansible.builtin.set_fact:
+    vm_name: "{{ vmname.user_input }}"
+
+# Choose regular user name
+- name: Prompt for user creation
+  ansible.builtin.pause:
+    prompt: "Enter username:"
+  register: username
+
+- name: Set user
+  ansible.builtin.set_fact:
+    user: "{{ username.user_input }}"
+
+# Choose global password for root and regular user
 - name: Prompt for global password
   ansible.builtin.pause:
     prompt: "Enter global password (must be hashed):"
@@ -22,30 +44,22 @@
   ansible.builtin.set_fact:
     global_password: "{{ user_root_password.user_input }}"
 
+# Add ssh key of the host machine
 - name: Prompt for global ssh key
   ansible.builtin.pause:
     prompt: "Enter global ssh .pub key:"
     echo: no
   register: ssh_key
 
-- name: Set root password
+- name: Set global ssh key
   ansible.builtin.set_fact:
     global_pub_key: "{{ ssh_key.user_input }}"
-
-- name: Prompt for user creation
-  ansible.builtin.pause:
-    prompt: "Enter username:"
-  register: username
-
-- name: Set user
-  ansible.builtin.set_fact:
-    user: "{{ username.user_input }}"
-
+# Download os image 
 - name: Download OS Image
   include_tasks: download_image.yml
-
+# Create cloud init
 - name: Create Cloud-Init Config
   include_tasks: create_cloud_init.yml
-
+# Create vm
 - name: Create VM
   include_tasks: create_vm.yml
