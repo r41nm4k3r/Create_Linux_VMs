@@ -29,7 +29,7 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 
 ## Role Variables
 
-- `vm_name`: Name of the virtual machine. **Default**: lab ( ask for user input.).
+- `vm_name`: Name of the virtual machine ( ask for user input.).
 - `vm_memory`: Amount of memory to allocate to the VM in MB (ask for user input).
 - `vm_vcpus`: Number of virtual CPUs to allocate (ask for user input).
 - `vm_disk_size`: Amount of disk space in GB (ask for user input).
@@ -38,6 +38,17 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 - `ssh_public_key`: (Optional) Set your public SSH key to allow SSH login ( ask for user input ).
 - `global_password`: Global password valid for new user and root ( ask for user input ).
 - `user`: Create a regular user without sudo privileges (ask for user input).
+
+### Default variables
+
+- `vm_name`: lab.
+- `vm_memory`: 2048 MB.
+- `vm_vcpus`: 2.
+- `vm_disk_size`: 10 GB.
+- `os_variants`: arch.
+- `ssh_public_key`: ssh will not work if user will not provide a key.
+- `global_password`: **It is important to set a password**. If no password is set user will have empty password and root will be locked.
+- `user`: user.
 
 ---
 
