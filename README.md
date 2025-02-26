@@ -20,9 +20,9 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 
 ## Requirements
 
-- Ansible 2.9 or higher
+- Ansible (tested on version 2.17.8 but may also work on previous versions )
 - `virt-install` and `cloud-init` installed on the host system.
-- A Linux hypervisor (e.g., KVM, libvirt) with the necessary virtual network setup (`virbr0`).
+- A Linux hypervisor (KVM, libvirt) with the necessary virtual network setup (`virbr0`).
 - Access to the internet for downloading cloud images (Debian, Ubuntu, Fedora, Arch).
 
 ---
@@ -30,12 +30,14 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 ## Role Variables
 
 - `vm_name`: Name of the virtual machine ( ask for user input ).
-- `vm_memory`: Amount of memory to allocate to the VM (default: `4096` MB).
-- `vm_vcpus`: Number of virtual CPUs to allocate (default: `2`).
-- `os_variants`: A dictionary for different supported OS versions (coises: `ubuntu`, `debian`, `fedora`, `arch`).
+- `vm_memory`: Amount of memory to allocate to the VM in MB (ask for user input).
+- `vm_vcpus`: Number of virtual CPUs to allocate (ask for user input).
+- `vm_disk_size`: Amount of disk space in GB (ask for user input).
+- `os_variants`: A dictionary for different supported OS versions (choices: `ubuntu`, `debian`, `fedora`, `arch`).
 - `cloud_init_iso`: Path to the cloud-init ISO (default: `/var/lib/libvirt/images/cloud-init.iso`).
 - `ssh_public_key`: (Optional) Set your public SSH key to allow SSH login ( ask for user input ).
-- `global_password`: global password valid for new user and root ( ask for user input ).
+- `global_password`: Global password valid for new user and root ( ask for user input ).
+- `user`: Create a regular user without sudo privileges (ask for user input).
 
 ---
 

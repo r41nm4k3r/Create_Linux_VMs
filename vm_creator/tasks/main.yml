@@ -6,7 +6,7 @@
 
 - name: Set OS variable
   ansible.builtin.set_fact:
-    vm_os: "{{ user_os_input.user_input | lower }}"
+    vm_os: "{{ user_os_input.user_input | default(default_vm_os, true) }}"
 
 - name: Validate OS selection
   ansible.builtin.fail:
@@ -21,7 +21,37 @@
 
 - name: Set vm name
   ansible.builtin.set_fact:
-    vm_name: "{{ vmname.user_input }}"
+    vm_name: "{{ vmname.user_input | default(default_vm_name, true) }}"
+
+# Choose vcpu
+- name: Prompt for vcpus
+  ansible.builtin.pause:
+    prompt: "Enter vm cpu (plain number)"
+  register: vmcpu
+
+- name: Set vm cpu
+  ansible.builtin.set_fact:
+    vm_vcpus: "{{ vmcpu.user_input | default(default_vm_vcpus, true) }}"
+
+# Choose ram
+- name: Prompt for Ram
+  ansible.builtin.pause:
+    prompt: "Enter vm ram (MB)"
+  register: vmram
+
+- name: Set vm ram
+  ansible.builtin.set_fact:
+    vm_memory: "{{ vmram.user_input | default(default_vm_memory, true) }}"
+
+# Choose disk size
+- name: Prompt for disk size
+  ansible.builtin.pause:
+    prompt: "Enter vm disk size (GB)"
+  register: vmdisk
+
+- name: Set vm disk size
+  ansible.builtin.set_fact:
+    vm_disk_size: "{{ vmdisk.user_input | default(default_vm_disk_size, true) }}"
 
 # Choose regular user name
 - name: Prompt for user creation
@@ -31,7 +61,7 @@
 
 - name: Set user
   ansible.builtin.set_fact:
-    user: "{{ username.user_input }}"
+    user: "{{ username.user_input | default('user', true) }}"
 
 # Choose global password for root and regular user
 - name: Prompt for global password

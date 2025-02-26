@@ -1,8 +1,8 @@
-vm_name: ""
-vm_memory: 4096
-vm_vcpus: 4
-vm_disk_size: 15
+default_vm_name: "lab"
+default_vm_memory: 2048
+default_vm_vcpus: 2
+default_vm_disk_size: 10
 image_directory: "/var/lib/libvirt/images"
 cloud_init_iso: "{{ image_directory }}/{{ vm_name }}/cloud-init.iso"
-vm_os: ""  # Will be prompted at runtime
+default_vm_os: "arch"  # Will be prompted at runtime
 # root_password: ""  # Will be prompted at runtime
