@@ -5,18 +5,18 @@ disable_root: false
 users:
   - name: root
     lock_passwd: false
-    hashed_passwd: "{{ root_password }}"
+    hashed_passwd: "{{ global_password }}"
     chpasswd: { expire: False }
     ssh_pwauth: true
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiSUsrveUe486QGWfyiYzfD+61SceoVdXQ2umsgwpY62vMBHgAdgxplmb85F/OgyIS2/ar3J/0xrDd5vHkmWI4sH5hjW9TB9Yh/vVSC4HNmCMbKwKVyhiWqRczxhSGGQ3idCNWXT4Vc66CEYwLpwMemUdrC2odzjtoQPX52OGxaPDVjKM/KwYymmof+wzgLg6R4K1HFq6EFUeEgg1egLTt71o1OjGW/VGDjtFjoJqVB3ZMx/iy/BulEDGdl0IlKN8hMkArx4hToVPnsqaAo/vB6vzufRJX+aw4/peTn3hYsMQru/I08aQIULhY17fEXXLCI0zpQ1+MLOQsZtJ99bVr nny@ptolemy  # Add your SSH key here
-  - name: nny
+      - {{ global_pub_key }}
+  - name: {{ user }}
     lock_passwd: false
-    hashed_passwd: "{{ root_password }}"
+    hashed_passwd: "{{ global_password }}"
     chpasswd: { expire: False }
     ssh_pwauth: true
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiSUsrveUe486QGWfyiYzfD+61SceoVdXQ2umsgwpY62vMBHgAdgxplmb85F/OgyIS2/ar3J/0xrDd5vHkmWI4sH5hjW9TB9Yh/vVSC4HNmCMbKwKVyhiWqRczxhSGGQ3idCNWXT4Vc66CEYwLpwMemUdrC2odzjtoQPX52OGxaPDVjKM/KwYymmof+wzgLg6R4K1HFq6EFUeEgg1egLTt71o1OjGW/VGDjtFjoJqVB3ZMx/iy/BulEDGdl0IlKN8hMkArx4hToVPnsqaAo/vB6vzufRJX+aw4/peTn3hYsMQru/I08aQIULhY17fEXXLCI0zpQ1+MLOQsZtJ99bVr nny@ptolemy  # Add your SSH key here
+      - {{ global_pub_key }}
 runcmd:
   - echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
   - echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
