@@ -52,7 +52,7 @@ Default values are located in defaults/main.yml:
 - `global_password`: "password".
 - `user`: user.
 
-[!WARNING]: If no password is set user and root will have the default password but ssh will work only for user.
+>[!WARNING] : If no password is set user and root will have the default password but ssh will work only for user.
 ---
 
 ## Usage
