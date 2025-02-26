@@ -88,12 +88,10 @@ ssh root@<VM-IP>
 
 
 ## Customization
-
-    Modify the user-data.j2 template to customize the cloud-init configuration to suit your environment.
     
-    Modify the  defaults/main.yml to customize the vm ram,disk size,cpu etc.
+    Modify the  defaults/main.yml to customize the default vm ram,disk size,cpu etc.
 
-    Modify the  vars/main.yml to add/remove/change the linux distro image of vm you would like to create.
+    Modify the  vars/main.yml to add/remove/change the linux distro image of vm you would like to create.  
 
 License
 
