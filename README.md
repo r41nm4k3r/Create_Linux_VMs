@@ -1,6 +1,7 @@
 # Create VM Ansible Role
 
 This Ansible role is designed to automate the creation of a Linux virtual machine (VM) using **virt-install**. The role supports multiple Linux distributions including **Debian**, **Ubuntu**, **Fedora**, and **Arch Linux**. It also integrates **cloud-init** to automatically configure the VM, including:
+- *Select linux distro*
 - *Add SSH key* 
 - *Setting a global password (same password for user and root)*
 - *Create new regular user (without sudo rights)*
