@@ -4,7 +4,7 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 - *Add SSH key* 
 - *Setting a global password (same password for user and root)*
 - *Create new regular user (without sudo rights)*
-- *Choose vm name*
+- *Set vm parameters*
 ---
 
 ## Features
@@ -53,7 +53,7 @@ Default values are located in defaults/main.yml:
 - `user`: user.
 
 > [!CAUTION] 
-> If no password is set user and root will have the default password but ssh will work only for user.
+> If no password is set user and root will have the default password but ssh will work **only** for user.
 
 ---
 
