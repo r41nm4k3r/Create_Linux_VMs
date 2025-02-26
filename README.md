@@ -29,7 +29,7 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 
 ## Role Variables
 
-- `vm_name`: Name of the virtual machine ( ask for user input ).
+- `vm_name`: Name of the virtual machine. **Default**: lab ( ask for user input.).
 - `vm_memory`: Amount of memory to allocate to the VM in MB (ask for user input).
 - `vm_vcpus`: Number of virtual CPUs to allocate (ask for user input).
 - `vm_disk_size`: Amount of disk space in GB (ask for user input).
