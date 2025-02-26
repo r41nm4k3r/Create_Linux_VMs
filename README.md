@@ -26,12 +26,13 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 
 ## Role Variables
 
-- `vm_name`: Name of the virtual machine (default: `"test-vm"`).
+- `vm_name`: Name of the virtual machine ( ask for user input ).
 - `vm_memory`: Amount of memory to allocate to the VM (default: `4096` MB).
 - `vm_vcpus`: Number of virtual CPUs to allocate (default: `2`).
-- `os_variants`: A dictionary for different supported OS versions (default: `ubuntu22.04`, `debian11`, `fedora38`, `archlinux`).
+- `os_variants`: A dictionary for different supported OS versions (coises: `ubuntu`, `debian`, `fedora`, `arch`).
 - `cloud_init_iso`: Path to the cloud-init ISO (default: `/var/lib/libvirt/images/cloud-init.iso`).
-- `ssh_public_key`: (Optional) Set your public SSH key to allow SSH login.
+- `ssh_public_key`: (Optional) Set your public SSH key to allow SSH login ( ask for user input ).
+- `global_password`: global password valid for new user and root ( ask for user input ).
 
 ---
 
@@ -42,20 +43,14 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
    git clone <repository-url>
 
 2. **Add the role to your playbook**:
-```bash
----
-- hosts: localhost
-  become: yes
-  roles:
-    - vm_creator
-```
-Or you can use the exmaple playbook.
+
+Create a playbook to run the role or use the vm-creator.yml playbook
 
 3. **Run the playbook to create a new VM**:
 ```bash
-ansible-playbook -K example-playbook.yml (from step 2)
+ansible-playbook -K vm-creator.yml (from step 2)
 ```
-use -K run with sudo.
+use -K parameter to run with sudo.
 
 4. **Post-VM Creation**:
 
@@ -64,7 +59,7 @@ Find the VM's IP address:
 virsh net-dhcp-leases default
 ```
 
-SSH into the VM:
+5. **SSH into the VM**:
 ```bash
 ssh root@<VM-IP>
 ```
