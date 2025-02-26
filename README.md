@@ -39,7 +39,9 @@ This Ansible role is designed to automate the creation of a Linux virtual machin
 - `global_password`: Global password valid for new user and root ( ask for user input ).
 - `user`: Create a regular user without sudo privileges (ask for user input).
 
-### Default variables
+### Default variables 
+
+Default values are located in defaults/main.yml:
 
 - `vm_name`: lab.
 - `vm_memory`: 2048 MB.
