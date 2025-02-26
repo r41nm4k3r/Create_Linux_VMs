@@ -1,7 +1,7 @@
 # Choose OS
 - name: Prompt for OS selection
   ansible.builtin.pause:
-    prompt: "Enter the OS (debian, fedora, ubuntu, arch):"
+    prompt: "Enter the OS (debian, fedora, ubuntu, arch)"
   register: user_os_input
 
 - name: Set OS variable
@@ -16,7 +16,7 @@
 # Choose vm name
 - name: Prompt for vm name
   ansible.builtin.pause:
-    prompt: "Enter vm name:"
+    prompt: "Enter vm name"
   register: vmname
 
 - name: Set vm name
@@ -26,7 +26,7 @@
 # Choose regular user name
 - name: Prompt for user creation
   ansible.builtin.pause:
-    prompt: "Enter username:"
+    prompt: "Enter username"
   register: username
 
 - name: Set user
@@ -36,7 +36,7 @@
 # Choose global password for root and regular user
 - name: Prompt for global password
   ansible.builtin.pause:
-    prompt: "Enter global password (must be hashed):"
+    prompt: "Enter global password (must be hashed)"
     echo: no
   register: user_root_password
 
@@ -47,7 +47,7 @@
 # Add ssh key of the host machine
 - name: Prompt for global ssh key
   ansible.builtin.pause:
-    prompt: "Enter global ssh .pub key:"
+    prompt: "Enter global ssh .pub key"
     echo: no
   register: ssh_key
 
