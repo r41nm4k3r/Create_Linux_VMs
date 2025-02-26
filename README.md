@@ -63,10 +63,8 @@ virsh net-dhcp-leases default
 ```bash
 ssh root@<VM-IP>
 ```
-Set the root password manually:
-```bash
-passwd
-```
+Password for user and root is set during the playbook running ("global_password")
+
 
 ## Customization
 
